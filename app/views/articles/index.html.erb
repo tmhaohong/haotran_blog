@@ -1,0 +1,30 @@
+<div class="container">
+  <% if notice %>
+    <p id="notice"><%= notice %></p>
+  <% end %>
+
+  <h1 class="blog-title text-center">Hao Tran's Blog</h1>
+  <h3 class="blog-title-sub text-center">This is my first Rails Application!</h3>
+
+  <ul class="blog-timeline">
+    <% @articles.sort do|x,y| y.created_at<=>x.created_at end .each_with_index do |article, index| %>
+      <li class="blog-timeline-item <% if index%2 == 0 %>right<% end %>">
+        <img class="blog-timeline-item-avatar" src="https://lh3.googleusercontent.com/-1L5mQB5ns-A/UnEjHQyxy0I/AAAAAAAAAJw/L9eOgpJFgdc/w278-h280-p/Untitled-1.jpg" />
+        <span class="blog-timeline-item-created-at"><%= article.created_at %></span>
+        <div class="blog-timeline-item-contents">
+          <h4 class="blog-timeline-item-title"><%= article.tilte %></h4>
+          <div class="blog-timeline-item-body"><%= @markdown.render(article.body).html_safe %></div>
+          <ul class="blog-timeline-item-btns">
+            <li><%= link_to ("<i class='fa fa-info'></i> Detail").html_safe, article, class: "btn border-less" %></li>
+            <li><%= link_to ("<i class='fa fa-pencil'></i> Update").html_safe, edit_article_path(article), class: "btn border-less" %></li>
+            <li><%= link_to ("<i class='fa fa-times'></i> Delete").html_safe, article, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn border-less" %></li>
+          </ul>
+        </div>
+      </li>    
+    <% end %>
+  </ul>
+  <div class="blog-timeline-add-new">
+    <%= link_to ("<i class='fa fa-plus'></i> New Article").html_safe, new_article_path, class: "btn" %>
+  </div>
+</div>
+

@@ -1,0 +1,14 @@
+<div class="container">
+  <% if notice %>
+    <p id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="blog-review">
+    <h4 class="blog-timeline-item-title"><%= @article.tilte %></h4>
+    <div class="blog-timeline-item-body"><%= @markdown.render(@article.body).html_safe %></div>
+  </div>
+  
+  <%= link_to 'Edit', edit_article_path(@article), class: "btn" %>
+  <%= link_to 'Back', articles_path, class: "btn link btn-back" %>
+
+</div>

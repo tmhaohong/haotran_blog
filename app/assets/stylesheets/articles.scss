@@ -1,0 +1,208 @@
+// Place all the styles related to the articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "mixins";
+
+.container {
+  width: 768px;
+  margin: 0 auto;
+
+  #notice {
+    text-align: center;
+  }
+}
+
+.blog{
+  &-review{
+    border: 1px solid;
+    padding: $size-unit-double;
+    background: $color-content-background;
+    margin: $size-unit-double * 2 0 $size-unit-double 0;
+    @include css3-styles(border-radius, $size-unit);
+  }
+
+  &-title{
+    margin: $size-unit-double * 2 0 $size-unit-double 0;
+    font-size: $size-text-large;
+    line-height: 1em;
+  
+    &-sub{
+      margin: $size-unit * 3 0 $size-unit-double * 2 0;
+      font-size: $size-text-medium;
+      line-height: 1em;
+    }
+  }
+  
+  &-timeline {
+    padding: 0;
+    list-style: none;
+    margin: $size-unit-double 0;
+    position: relative;
+  
+    &:before {
+      content: "";
+      top: 0;
+      border: 1px dashed;
+      height: 100%;
+      @include absolute-center(2px);
+    }
+    
+    &-item {
+      position: relative;
+      margin-top: $size-unit-double;
+      
+      &-avatar {
+        $width: 50px;
+        $border-width: 3px;
+        width: $width;
+        border: $border-width solid;
+        top: 0;
+        @include absolute-center($width + ($border-width * 2));
+        @include css3-styles(border-radius, $width);
+        @include css3-styles(transition, all .5s);
+      }
+
+      &-title{
+        margin: 0;
+      }
+
+      &-created-at {
+        top: $size-unit-double;
+        font-size: $size-text-small;
+        @include absolute-center(-100px);
+      }
+
+      &-contents {
+        width: calc(50% - 50px);
+        border: 1px solid;
+        padding: $size-unit-double;
+        position: relative;
+        box-sizing: border-box;
+        background-color: $color-content-background;
+        @include css3-styles(border-radius, $size-unit);
+        @include css3-styles(transition, all .5s);
+      
+        &:before, &:after {
+          border-left: 8px solid transparent;
+          border-right: 8px solid transparent;
+          border-top: 15px solid $color-content-background;
+          border-bottom: 0px;
+          content: "";
+          display: inline-block;
+          height: 0;
+          position: absolute;
+          width: 0;
+          right: -14px;
+          top: $size-unit-double;
+          @include css3-styles(transform, rotate(-90deg));
+          @include css3-styles(transition, all .5s);
+        }
+      
+        &:before {
+          border-top-color: $color-text;
+          right: -16px;
+        }
+      }
+
+      &-btns {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        font-size: $size-text-small;
+        border-top: 1px dotted;
+        text-align: center;
+        padding-top: $size-unit-half;
+        li {
+          display: inline;
+          vertical-align: top;
+          margin-left: $size-unit-double;
+          &:first-child {
+            margin-left: 0;
+          }
+        }
+
+        i {
+          margin-right: $size-unit-half;
+        }
+      }
+
+      &:hover {
+        .blog-timeline-item {
+          
+          &-avatar {
+            border-color: $color-blog-hover;
+          }
+
+          &-contents {
+            border-color: $color-blog-hover;
+            @include css3-styles(box-shadow, 0px 0px 5px $color-text);
+            &:before{
+              border-top-color: $color-blog-hover;
+            }
+          }
+        }
+      }
+     
+      &.right {
+        .blog-timeline-item {
+          
+          &-created-at {
+            @include absolute-center(360px);
+          }
+       
+          &-contents {
+            margin-left: 434px;
+       
+            &:before, &:after {
+              border-bottom: 15px solid $color-content-background;
+              border-top: 0px;
+              left: -14px;
+            }
+       
+            &:before{
+              border-bottom-color: $color-text;
+              left: -16px;
+            }
+          }
+        }
+
+        &:hover {
+          .blog-timeline-item {
+            
+            &-contents {
+            
+              &:before {
+                border-bottom-color: $color-blog-hover;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &-add-new {
+      text-align: center;
+    }
+  }
+}
+
+form{
+  margin-top: $size-unit-double;
+  text-align: center;
+
+  .blog-input{
+    padding: $size-unit;
+    width: 60%;
+    font-size: $size-text;
+    border: 1px solid $color-text;
+    outline: none;
+
+    &.textarea{
+      min-height: $size-unit * 10;
+    }
+  }
+}
+
+.btn-back{
+    margin-left: $size-unit-double;
+  }

@@ -1,0 +1,51 @@
+@import "variables";
+
+@mixin absolute-center($width) {
+  position: absolute;
+  left: calc(50% - (#{$width} / 2));
+}
+
+@mixin css3-styles($attribute, $value) {
+  @each $vendor in $vendors{
+    -#{$vendor}-#{$attribute}: $value;
+  }
+  #{$attribute}: $value;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.btn {
+  text-decoration: none;
+  background-color: transparent;
+  border-radius: $size-unit-half;
+  border: 1px solid $color-text;
+  padding: 4px $size-unit;
+  @include css3-styles(border-radius, $size-unit-half);
+  @include css3-styles(transition, all .5s);
+  
+  &:hover {
+    background: $color-blog-hover;
+    border-color: $color-blog-hover;
+    color: $color-text-hove-in-background-color;
+  }
+
+  &.border-less, &.link{
+    border: none;
+  }
+
+  &.link{
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    opacity: 0.5;
+
+    &:hover {
+      background-color: transparent;
+      border-color: none;
+      opacity: 1;
+      color: $color-text;
+    }
+  }
+}
