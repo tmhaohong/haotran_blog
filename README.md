@@ -35,7 +35,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 First of all, I am just a Front-end developer, this is the first time I work on RoR and Heroku. Following the tutorial isn't 100% success. I encountered  many problems when I installed Rails and ran the command line (maybe there was a conflict in my laptop's environment) Luckily, Stackoverflow saved me.
 
-Currently, I don't know how can I access the Postgre database. I created new application name after I did migrate wrong because I couldn't delete current database.
+Currently, I don't know how can I access the Postgre database. I created new application name after I did migrate wrong because I couldn't delete the current database.
 
 Third, I don't think this assignment that 's for fresh people like me just takes several hours. I lost two days to learn Codeacademy’s Ruby Course. I haven't complete it yet until now. The application is easy to create but this makes me can't understand what happens behind the sense. I still not understand why there are many ways to add a class to an input.
 
